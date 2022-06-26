@@ -73,11 +73,6 @@ const animation = () => {
   camera.lookAt(1000, -1000, 1000);
 
   for (let i = 0; i < length; i++) {
-    plane[i].position.y += -2.5;
-    if (plane[i].position.y < -sizes.height) {
-      plane[i].position.y = sizes.height;
-    }
-
     plane[i].rotation.y += Math.random() * 0.1;
     plane[i].rotation.x += Math.random() * 0.1;
     plane[i].rotation.z += Math.random() * 0.1;
