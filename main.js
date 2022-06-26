@@ -70,7 +70,7 @@ const animation = () => {
   camera.position.x = 1000 * Math.sin(radian);
   camera.position.z = 1000 * Math.cos(radian);
 
-  camera.lookAt(1000, -1000, 1000);
+   camera.lookAt(new THREE.Vector3(0, 0, 0));
 
   for (let i = 0; i < length; i++) {
     plane[i].rotation.y += Math.random() * 0.1;
