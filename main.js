@@ -31,7 +31,7 @@ scene.add(pointLight);
 let material;
 let plane = [];
 let length = 600;
-let plane_scale = 25;
+let plane_scale = 35;
 for (let i = 0; i < length; i++) {
   const geometry = new THREE.PlaneGeometry(plane_scale, plane_scale);
 
@@ -64,15 +64,20 @@ controls.dampingFactor = 0.2;
 let rot = 0;
 const animation = () => {
   requestAnimationFrame(animation);
-  rot += 0.2;
+  rot += 0.3;
   const radian = (rot * Math.PI) / 180;
 
   camera.position.x = 1000 * Math.sin(radian);
   camera.position.z = 1000 * Math.cos(radian);
 
-  camera.lookAt(0, -100, 0);
+  camera.lookAt(1000, -1000, 1000);
 
   for (let i = 0; i < length; i++) {
+    plane[i].position.y += -2.5;
+    if (plane[i].position.y < -sizes.height) {
+      plane[i].position.y = sizes.height;
+    }
+
     plane[i].rotation.y += Math.random() * 0.1;
     plane[i].rotation.x += Math.random() * 0.1;
     plane[i].rotation.z += Math.random() * 0.1;
