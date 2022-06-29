@@ -12,7 +12,8 @@ const sizes = {
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height);
-scene.add(camera);
+camera.position.set(0, 0, 0);
+//scene.add(camera);
 
 const renderer = new THREE.WebGLRenderer({
   canvas: domElement,
@@ -31,9 +32,9 @@ scene.add(pointLight);
 let material;
 let plane = [];
 let length = 600;
-let plane_scale = 35;
+let plane_scale = 40;
 for (let i = 0; i < length; i++) {
-  const geometry = new THREE.PlaneGeometry(plane_scale, plane_scale);
+  const geometry = new THREE.PlaneGeometry(plane_scale + 10, plane_scale);
 
   let rect = [];
   for (let ci = 0; ci < length; ci++) {
@@ -49,9 +50,9 @@ for (let i = 0; i < length; i++) {
 
   plane[i] = new THREE.Mesh(geometry, material);
 
-  plane[i].position.x = sizes.width * (Math.random() - 0.5);
-  plane[i].position.y = sizes.height * (Math.random() - 0.5);
-  plane[i].position.z = sizes.width * (Math.random() - 0.5);
+  plane[i].position.x = 2000 * (Math.random() - 0.5);
+  plane[i].position.y = 2000 * (Math.random() - 0.5);
+  plane[i].position.z = 5000 * (Math.random() - 0.5);
   scene.add(plane[i]);
 }
 // カメラコントローラーを作成
@@ -70,7 +71,7 @@ const animation = () => {
   camera.position.x = 1000 * Math.sin(radian);
   camera.position.z = 1000 * Math.cos(radian);
 
-   camera.lookAt(new THREE.Vector3(0, 0, 0));
+  camera.lookAt(new THREE.Vector3(0, 0, 0));
 
   for (let i = 0; i < length; i++) {
     plane[i].rotation.y += Math.random() * 0.1;
